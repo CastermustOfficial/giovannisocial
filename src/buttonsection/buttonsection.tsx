@@ -1,18 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, FC, FormEvent } from 'react';
 import './ButtonSection.css';
 
-const ButtonSection = () => {
+interface ButtonSectionProps {
+  addContent: (newPost: { id: number; author: string; title: string; content: string }) => void;
+}
+
+const ButtonSection: FC<ButtonSectionProps> = ({ addContent }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const newPost = {
+      id: Date.now(),
+      author,
+      title,
+      content
+    };
+    addContent(newPost);
+    setAuthor('');
+    setTitle('');
+    setContent('');
+    toggleModal();
+  };
+
   return (
     <>
       <section className="button-section">
-        <button className="add-content-button" onClick={toggleModal}>
-          Aggiungi Contenuto
+        <button className={`add-content-button ${isModalOpen ? 'hidden' : ''}`} onClick={toggleModal}>
+        Aggiungi Contenuto
         </button>
       </section>
       {isModalOpen && (
@@ -22,18 +44,35 @@ const ButtonSection = () => {
               &times;
             </button>
             <h2>Aggiungi Nuovo Contenuto</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <label>
                 Nome Autore:
-                <input type="text" name="author" />
+                <input
+                  type="text"
+                  name="author"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                  required
+                />
               </label>
               <label>
                 Titolo:
-                <input type="text" name="title" />
+                <input
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
               </label>
               <label>
                 Contenuto:
-                <textarea name="content"></textarea>
+                <textarea
+                  name="content"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  required
+                ></textarea>
               </label>
               <button type="submit">Salva</button>
             </form>

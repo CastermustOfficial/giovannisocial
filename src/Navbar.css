@@ -1,1 +1,22 @@
 
+nav {
+    background-color: #007bff;
+    padding: 10px 20px;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
+  
+  nav li {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  nav li:hover {
+    text-decoration: underline;
+  }
+  
