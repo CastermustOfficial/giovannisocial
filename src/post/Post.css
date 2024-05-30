@@ -1,0 +1,64 @@
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .post-actions button {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 10px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  
+  .post-actions button i {
+    margin-right: 5px;
+  }
+  
+  .post-actions button:hover {
+    color: #d8d8d8;
+    transform: translateY(-2px);
+  }
+  
+  .reply-section {
+    margin-top: 20px;
+  }
+  
+  .reply-section input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .reply-section button {
+    background: #28a745;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .reply-section button:hover {
+    background: #218838;
+  }
+  
+  .replies {
+    margin-top: 10px;
+  }
+  
+  .replies p {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
