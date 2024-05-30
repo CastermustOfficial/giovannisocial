@@ -1,116 +1,96 @@
 .button-section {
-    position: sticky;
-    top: 60px; /* Adjust this value based on the height of your navbar */
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    z-index: 999; /* Ensure it stays above the main content */
-  }
-  
-  .add-content-button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-content-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100; /* Imposta uno z-index superiore per far sì che il popup sia sovrapposto al contenuto */
-  }
-  
-  .modal {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 101; /* Imposta uno z-index superiore per far sì che il popup sia sovrapposto al contenuto */
-  }
-  
-  
-  .close-button {
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
-  .modal h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #333;
-  }
-  
-  .modal label {
-    display: block;
-    margin: 10px 0;
-    font-size: 1em;
-    color: #333;
-  }
-  
-  .modal input[type="text"],
-  .modal textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-    color: #333;
-  }
-  
-  .modal textarea {
-    resize: vertical;
-  }
-  
-  .modal button[type="submit"] {
-    background-color: #28a745;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .modal button[type="submit"]:hover {
-    background-color: #218838;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.add-content-button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.add-content-button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.modal h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal form button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal form button:hover {
+  background: #0056b3;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #666;
+}

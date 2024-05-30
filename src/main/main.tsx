@@ -1,6 +1,8 @@
-import React, { useState, useEffect, FC } from 'react';
-import './main.css';
-import ButtonSection from '../buttonsection/buttonsection';
+import React, { useState, FC } from 'react';
+import './Main.css';
+import ButtonSection from '../buttonsection/ButtonSection';
+import Post from '../post/Post';
+import logo from './logo.png';
 
 interface Post {
   id: number;
@@ -15,7 +17,7 @@ const Main: FC = () => {
     return savedPosts ? JSON.parse(savedPosts) : [];
   });
 
-  const addContent = (newPost: Post) => {
+  const addContent = (newPost: { author: string; title: string; content: string }) => {
     const updatedPosts = [...posts, { ...newPost, id: Date.now() }];
     setPosts(updatedPosts);
     localStorage.setItem('posts', JSON.stringify(updatedPosts));
@@ -27,23 +29,26 @@ const Main: FC = () => {
     localStorage.setItem('posts', JSON.stringify(updatedPosts));
   };
 
+  const repostContent = (post: { author: string; title: string; content: string }) => {
+    const repostedPost = {
+      ...post,
+      id: Date.now(),
+      content: `Ripubblicato da: ${post.author}\n${post.content}`,
+    };
+    addContent(repostedPost);
+  };
+
   return (
     <main className="main">
-      <section className="section">
-        <h1>CasterPOST</h1>
-        <p>L'unica zona PoliticallyIncorrect</p>
+      <section className="section sticky-header">
+        <img src={logo} alt="" />
+        <h1></h1>
+        <p><h3>CasterPOST - Orgogliosi di essere politicallyINCORRECT</h3></p>
       </section>
       <ButtonSection addContent={addContent} />
       <section className="posts-section">
-        {posts.map((post, index) => (
-          <div key={post.id} className="post">
-            <div className="post-header">
-              <button className="delete-button" onClick={() => deletePost(post.id)}>&times;</button>
-              <h3>{post.title}</h3>
-              <h4>by {post.author}</h4>
-            </div>
-            <p>{post.content}</p>
-          </div>
+        {posts.map((post) => (
+          <Post key={post.id} post={post} onDelete={deletePost} onRepost={repostContent} />
         ))}
       </section>
     </main>

@@ -1,0 +1,2 @@
+PER FUNZIONARE CORRETTAMENTE E' NECESSARIO INSTALLARE @FORTAWESOME
+npm install @fortawesome/fontawesome-free
